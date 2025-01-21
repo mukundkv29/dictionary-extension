@@ -12,8 +12,8 @@
     "default_title": "Dictionary Extension"
   },
   "icons": {
-    "48": "icon_48.png",
-    "96": "icon_96.png"
+    "48": "icons-search-48.png",
+    "96": "icons-search-96.png"
   },
   "content_scripts": [
     {

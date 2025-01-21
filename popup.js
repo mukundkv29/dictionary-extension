@@ -1,11 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('.search');
+    const definitionContainer = document.getElementById('definitions');
     
     form.addEventListener('submit', async function(event) {
         event.preventDefault();
         
         const wordInput = document.getElementById('word');
         const word = wordInput.value.trim();
+
+        definitionContainer.innerHTML = '';
         
         if (!word) {
             console.log('Please enter a word');
@@ -20,15 +23,18 @@ document.addEventListener('DOMContentLoaded', function() {
             const data = await response.json();
             console.log('API Response:', data);
             
-            if (data && data[0] && data[0].meanings && data[0].meanings[0]) {
-                const firstMeaning = data[0].meanings[0];
-                console.log('Part of Speech:', firstMeaning.partOfSpeech);
-                console.log('Definition:', firstMeaning.definitions[0].definition);
-                if(data[0].meanings[1]) {
-                    console.log('Definition: ', data[0].meanings[1].definitions[0].definition);
-                }
-                if(data[0].meanings[2]) {
-                    console.log('Definition: ', data[0].meanings[2].definitions[0].definition);
+            if (data && data[0] && data[0].meanings && data[0].meanings) {
+                for (let i=0;i<Math.min(3,data[0].meanings.length);i++) {
+                    if(data[0].meanings[i] && data[0].meanings[i].definitions[0]) {
+                        const definition = data[0].meanings[i].definitions[0].definition;
+                        const definitionElement = document.createElement('div');
+                        definitionElement.className = 'definition';
+                        definitionElement.innerHTML = `
+                            <div class="definition-number">Definition ${i+1}</div>
+                            <div class="definition-text">${definition}</div>
+                        `;
+                        definitionContainer.appendChild(definitionElement);
+                    }
                 }
             }
             wordInput.value = '';
@@ -37,4 +43,10 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Error:', error.message);
         }
     });
+
+    function showError(message) {
+        definitionContainer.innerHTML = `
+            <div class="error-message">${message}</div>
+        `;
+    }
 });
