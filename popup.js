@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const wordInput = document.getElementById('word');
         const word = wordInput.value.trim();
-
+        wordInput.focus();
         definitionContainer.innerHTML = '';
         
         if (!word) {
@@ -17,8 +17,13 @@ document.addEventListener('DOMContentLoaded', function() {
         
         try {
             const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(word)}`);
+            console.log(response);
             if (!response.ok) {
-                throw new Error('Word not found');
+                const definitionElement = document.createElement('div');
+                definitionElement.innerHTML = `
+                    <div class="error-message">Word not found...</div>
+                `;
+                definitionContainer.appendChild(definitionElement);
             }
             const data = await response.json();
             console.log('API Response:', data);
