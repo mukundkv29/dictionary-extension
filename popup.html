@@ -100,6 +100,20 @@
             padding: 10px;
             text-align: center;
         }
+
+        footer {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        a {
+            color: #008CBA;
+            font-size: 15px;
+        }
+
+        a:link {
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -115,7 +129,17 @@
     </form>
 
     <div id="definitions"></div>
-
+    <footer>
+        <div id="donate"  class="footer-item">
+            <a href="https://buymeacoffee.com/">Donate</a>
+        </div>
+        <div class="request-feature" class="footer-item">
+            <a href="https://workspace.google.com/products/forms/">Request Feature</a>
+        </div>
+        <div id="support" class="footer-item">
+            <a href="https://workspace.google.com/products/forms/">Support</a>
+        </div>
+    </footer>
     <script src="popup.js"></script>
 </body>
 </html>
