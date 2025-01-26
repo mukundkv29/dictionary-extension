@@ -10,24 +10,22 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             background-color: #f8f9fa;
             margin: 0;
-            overflow: hidden; /* Prevents scrolling */
+            overflow: hidden;
         }
 
-        /* Search Container */
         .search {
             background-color: white;
             padding: 10px;
             border-radius: 25px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             position: relative;
-            display: flex; /* Use flex for alignment */
+            display: flex;
             align-items: center;
         }
 
-        /* Input Field */
         input[type="word"] {
             width: 100%;
-            padding: 10px 40px 10px 12px; /* Space for button inside input */
+            padding: 10px 40px 10px 12px;
             border: 1px solid #dee2e6;
             border-radius: 25px;
             font-size: 14px;
@@ -40,10 +38,9 @@
             box-shadow: 0 0 4px rgba(0, 140, 186, 0.25);
         }
 
-        /* Button */
         .button {
-            position: absolute; /* Position relative to the parent container */
-            right: 15px; /* Aligns to the right of input */
+            position: absolute;
+            right: 15px;
             background-color: #008CBA;
             border: none;
             color: white;
@@ -63,7 +60,6 @@
             background-color: #005f8d;
         }
 
-        /* SVG Icon */
         .button svg {
             fill: white;
             width: 20px;
@@ -114,9 +110,56 @@
         a:link {
             text-decoration: none;
         }
+        
+        header {
+            position: relative;
+            height: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .project-title {
+            color: #008cba;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        header button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        header button svg {
+            transition: fill 0.3s, stroke 0.3s;
+        }
+        
+        header button.active svg {
+            fill: black !important;
+            stroke: black !important;
+        }
+        
     </style>
 </head>
 <body>
+    <header>
+        <div class="project-title">Dictionary Extension</div>
+        <button id="powerButton">
+            <svg height="30px" width="30px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#008cba" stroke="#008cba">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>         
+                <g id="SVGRepo_iconCarrier"> 
+                    <g> 
+                        <path class="st0" d="M423.262,91.992c-16.877-15.91-43.434-15.098-59.32,1.778c-15.894,16.877-15.098,43.434,1.779,59.32 c32.082,30.213,49.754,71.238,49.754,115.5c0,87.934-71.541,159.476-159.476,159.476S96.525,356.524,96.525,268.59 c0-44.262,17.668-85.287,49.754-115.5c16.877-15.885,17.672-42.442,1.779-59.32c-15.885-16.885-42.455-17.688-59.32-1.778 C40.344,137.557,12.59,201.926,12.59,268.59C12.59,402.803,121.783,512,256,512c134.213,0,243.41-109.197,243.41-243.41 C499.41,201.926,471.656,137.557,423.262,91.992z"/> 
+                        <path class="st0" d="M256,268.59c23.178,0,41.967-15.033,41.967-33.574V33.574C297.967,15.033,279.178,0,256,0 c-23.178,0-41.967,15.033-41.967,33.574v201.443C214.033,253.557,232.822,268.59,256,268.59z"/> 
+                    </g> 
+                </g>
+            </svg>
+        </button>
+    </header>
     <form class="search">
         <label for="word"></label>
         <input type="word" id="word" name="word" placeholder="Search..." autofocus>

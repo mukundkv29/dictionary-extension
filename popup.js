@@ -1,3 +1,7 @@
+document.getElementById('powerButton').addEventListener('click', function() {
+    this.classList.toggle('active');
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('.search');
     const definitionContainer = document.getElementById('definitions');
